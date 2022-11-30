@@ -20,11 +20,11 @@ const monster = {
 function renderCharacter(data) {
 	const {elementId, name, avatar, health, diceRoll, diceCount} = data
 	
-	let diceHTML = ""
+	const diceHTML = getDiceHtml(diceCount)
 	
-	for (let i = 0; i < diceCount; i++) {
-		diceHTML += `<div class="dice">${diceRoll[i]}</div>`
-	}
+	// const diceHTML = diceRoll.map(function(number) {
+	// 	return `<div class="dice">${number}</div>`
+	// }).join("")
 	
 	
 	document.getElementById(elementId).innerHTML = `
@@ -37,13 +37,32 @@ function renderCharacter(data) {
 	`
 }
 
+function getDiceRollArray(diceCount) {
+	const newDiceRolls = []
+	for (let i = 0; i < diceCount; i++) {
+		newDiceRolls.push(Math.floor(Math.random() * 6) + 1)
+	}
+	return newDiceRolls
+}
+
+function getDiceHtml(diceCount) {
+	return getDiceRollArray(diceCount)
+}
+
+getDiceRollArray(3)
+
 renderCharacter(hero)
 renderCharacter(monster)
 
-// 1. Convert our consts into two objects called "monster" and "hero.”
-// 2. Update the renderCharacter() function so that it accepts a single object "data" as its parameter instead of five string and numbers. This should reduce the number of arguments to pass in from five to one.
-// 3. Update the template now each variable is coming from "data.”
-// 4. Update the function call.
+// 1. Create a function called getDiceHtml. 
+
+// 2. getDiceHtml should map over the array of dice rolls returned from getDiceRollArray. Use that to generate the html for the dice with random values. Use this HTML: `<div class="dice">DICE VALUE HERE</div>`
+
+// 3. Think about the parameters and arguments.
+
+// 4. Down in renderCharacter(), set diceHtml equals to our new getDiceHtml function. Remember to give it the argument it needs. 
+
+// 5. Delete any code we no longer need.
 
 
 
