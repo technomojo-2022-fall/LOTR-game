@@ -46,7 +46,9 @@ function getDiceRollArray(diceCount) {
 }
 
 function getDiceHtml(diceCount) {
-	return getDiceRollArray(diceCount)
+	return getDiceRollArray(diceCount).map(function(number) {
+		return `<div class="dice">${number}</div>`
+	}).join("")
 }
 
 getDiceRollArray(3)
