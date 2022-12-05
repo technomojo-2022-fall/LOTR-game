@@ -3,7 +3,6 @@ const hero = {
 	name: "Wizard",
 	avatar: "images/wizard.png",
 	health: "60",
-	diceRoll: [3, 1, 4],
 	diceCount: 3
 }
 
@@ -12,19 +11,14 @@ const monster = {
 	name: "Orc",
 	avatar: "images/orc.png",
 	health: "10",
-	diceRoll: [2],
 	diceCount: 1
 }
 
 
 function renderCharacter(data) {
-	const {elementId, name, avatar, health, diceRoll, diceCount} = data
+	const {elementId, name, avatar, health, diceCount} = data
 	
 	const diceHTML = getDiceHtml(diceCount)
-	
-	// const diceHTML = diceRoll.map(function(number) {
-	// 	return `<div class="dice">${number}</div>`
-	// }).join("")
 	
 	
 	document.getElementById(elementId).innerHTML = `
@@ -56,16 +50,19 @@ getDiceRollArray(3)
 renderCharacter(hero)
 renderCharacter(monster)
 
-// 1. Create a function called getDiceHtml. 
-
-// 2. getDiceHtml should map over the array of dice rolls returned from getDiceRollArray. Use that to generate the html for the dice with random values. Use this HTML: `<div class="dice">DICE VALUE HERE</div>`
-
-// 3. Think about the parameters and arguments.
-
-// 4. Down in renderCharacter(), set diceHtml equals to our new getDiceHtml function. Remember to give it the argument it needs. 
-
-// 5. Delete any code we no longer need.
-
+// 1. Create a new constructor function called `Character` which
+//    takes our data as a parameter.
+// 2. Set up `this` for each of the five properties in our objects
+//    (for example: `this.health = data.health`).
+// 3. Then create a method called `getCharacterHtml` that performs the 
+//    same tasks as our current `renderCharacter` function.
+// 4. Create two new instances of `Character`. One for a hero, 
+//    called `wizard`, and one for a monster, called `orc`. 
+//    Render both of them on the page.
+// 5. Delete both the old `renderCharacter` function and the two 
+//    lines of code at the bottom of the page which invoke that 
+//    function.
+// 
 
 
 
