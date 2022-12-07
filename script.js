@@ -4,13 +4,18 @@ import Character from "./Character.js"
 const wizard = new Character(characterData.hero)
 const orc = new Character(characterData.monster)
 
+document.getElementById("attack-button").addEventListener("click", attack)
+
+function attack() {
+	display()
+}
+
 function display() {
 	document.getElementById("hero").innerHTML = wizard.getCharacterHtml()
 	document.getElementById("monster").innerHTML = orc.getCharacterHtml()
 }
-display()
-getDiceRollArray(3)
 
+display()
 
 // 1. Create a file called `utils.js`.
 // 2. Cut and paste the getDiceRollArray() function into it.

@@ -1,7 +1,9 @@
-import {getDiceRollArray} from "./utils.js"
+import {getDiceRollArray, getDicePlaceholderHtml} from "./utils.js"
 
 function Character(data) {
 	Object.assign(this, data)
+	
+	this.diceArray = getDicePlaceholderHtml(this.diceCount)
 	
 	this.getDiceHtml = function(diceCount) {
 		return getDiceRollArray(diceCount).map(function(number) {
@@ -10,7 +12,7 @@ function Character(data) {
 	}
 	
 	this.getCharacterHtml = function() {
-		const {elementId, name, avatar, health, diceCount} = this
+		const {elementId, name, avatar, health, diceCount, diceArray} = this
 		const diceHTML = this.getDiceHtml(diceCount)
 		
 		return `
@@ -19,7 +21,7 @@ function Character(data) {
 				<img class="avatar" src="${avatar}">
 				<p class="health">health: <b> ${health} </b></p>
 				<div class="dice-container">
-					${diceHTML}
+					${diceArray}
 				</div>
 			</div>
 		`
@@ -27,3 +29,12 @@ function Character(data) {
 }
 
 export default Character
+
+// 1. In the Character constructor, create a new property called "diceArray".
+// 2. Set diceArray equal to whatever is returned by the getDicePlaceholderHtml function (there are two things you need to make this work!)
+// 3. Instead of rendering diceHtml in the getCharacterHtml method, render diceArray.
+// 4. Delete any unnecessary code.
+
+
+
+
