@@ -6,9 +6,14 @@ function Character(data) {
 	this.diceArray = getDicePlaceholderHtml(this.diceCount)
 	
 	this.getDiceHtml = function(diceCount) {
-		return getDiceRollArray(diceCount).map(function(number) {
+		this.currentDiceScore = getDiceRollArray(this.diceCount)
+		this.diceArray = this.currentDiceScore.map(function(number) {
 			return `<div class="dice">${number}</div>`
 		}).join("")
+		
+		// return getDiceRollArray(diceCount).map(function(number) {
+		// 	return `<div class="dice">${number}</div>`
+		// }).join("")
 	}
 	
 	this.getCharacterHtml = function() {
