@@ -10,10 +10,10 @@ function Character(data) {
 		this.diceArray = this.currentDiceScore.map(function(number) {
 			return `<div class="dice">${number}</div>`
 		}).join("")
-		
-		// return getDiceRollArray(diceCount).map(function(number) {
-		// 	return `<div class="dice">${number}</div>`
-		// }).join("")
+	}
+	
+	this.takeDamage = function(attackScoreArray) {
+		console.log(`${this.name}: ${attackScoreArray}`)
 	}
 	
 	this.getCharacterHtml = function() {
