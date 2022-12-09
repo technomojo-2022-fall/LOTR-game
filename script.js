@@ -1,8 +1,16 @@
 import {characterData} from "./data.js"
 import Character from "./Character.js"
 
+let monsterArray = ["orc", "smeagol", "cavetroll"]
+
 const wizard = new Character(characterData.hero)
-const orc = new Character(characterData.monster)
+// const orc = new Character(characterData.monster)
+let monster = getNewMonster()
+
+function getNewMonster() {
+	const nextMonsterData = characterData[monsterArray.shift()]
+	return nextMonsterData ? new Character(nextMonsterData) : {}
+}
 
 document.getElementById("attack-button").addEventListener("click", attack)
 
